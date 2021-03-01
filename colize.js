@@ -66,10 +66,10 @@ function colision(element, secondelement) {
     const thispointtop = element.offsetTop - secondelement.offsetTop;
 
 
-    const method1 = eb > at && ab > et && ar > el && er - element.offsetWidth > al  ;
-    const method2 = eb > at && ab > et && er > al && ar > el + element.offsetWidth;
-    const method3 = eb > at && ar > el && er > al && ab > et + element.offsetHeight;
-    const method4 = ab > et && ar > el && er > al && eb - element.offsetHeight > ar;
+    const method1 = eb > at && ab > et && ar > el && er - element.offsetWidth/4.5 > al  ;
+    const method2 = eb > at && ab > et && er > al && ar > el + element.offsetWidth/4.5;
+    const method3 = eb > at && ar > el && er > al && ab > et + element.offsetHeight/4.5;
+    const method4 = ab > et && ar > el && er > al && eb - element.offsetHeight/4.5 > ar;
     //console.log(method1, method2, method3, method4);
     if (  method1 && method2 && method3 && !method4  ) {
       return {colisionelement:secondelement, element:element, direction:thispointleft, position:"top"} ;
@@ -82,6 +82,9 @@ function colision(element, secondelement) {
     }
     else if (  method1 && !method2 && method3 && !method4  ) {
       return {colisionelement:secondelement, element:element, direction:thispointtop, position:"left"} ;
+    }
+    else if (method1, method2, !method3, method4) {
+      return {colisionelement:secondelement, element:element, direction:thispointleft, position:"bottom"} ;
     }
     else {
         return {colisionelement:false, element:false, direction:false, position:false};

@@ -69,31 +69,15 @@ colision(el, isarrayiscolision, callback) {
 }
 let y = 0;
 let x = 0;
-let e = new Elementevent(document.getElementById("element"), "keydown",() => {
-  if (event.key === "ArrowDown") {
-    y +=44;
-  }
-  if (event.key === "ArrowRight") {
-    x +=44;
-  }
-  if (event.key === "ArrowUp") {
-    y -=44;
-  }
-  if (event.key === "ArrowLeft") {
-    x -=44;
-  }
-  this.element.style.left = x + "px";
-  this.element.style.top = y + "px";
-  e.colision(document.getElementById("el"), "array", function (informace) {
+let e = new Elementevent(document.getElementById("element"), "mousemove",() => {
+
+  this.element.style.left = event.x + "px";
+  this.element.style.top = event.y + "px";
+  e.colision(document.getElementById("el"), "", function (informace) {
     console.log(informace.position);
 
   });
-  e.colision(document.getElementById("eltwo") , "", function (informace) {
-    if (informace.position != false) {
-      console.log(informace.position, informace.direction);
-    }
-
-  })});
+  });
 
 e.move(window
 );
